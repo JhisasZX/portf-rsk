@@ -1,11 +1,44 @@
 ---
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Badge from '../components/Badge.astro';
+import LinkedInIcon from '../components/icons/linkedin_icon.astro'
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Jesús Machicado">
+	<main>
+		<section class="w-full mx-auto lg:w-[740px] py-44">
+			<img
+			class="rounded-full w-12 h-12 mb-4" 
+			src="https://res.cloudinary.com/dmegzyenk/image/upload/v1763726957/me_cs_doqcyr.jpg" alt="Jhisas photo"
+			/>
+			<h1 class="text-white text-5xl font-bold flex flex-row gap-x-4 pb-4">
+				Hola!, Soy Jesús <a 
+					href="https://www.linkedin.com/in/jmachruiz/"
+					target="_blank"
+					rel="noopener"
+					class="flex justify-center intems-center">
+				
+					<Badge>Disponible para trabajar</Badge>
+				</a>
+			</h1>
+			<h2 class="text-xl opacity-80">
+				+2 años de experiencia en infraestructura y desarrollo. Desarrollador Mobile.
+				De La Paz, Bolivia. Apasionado en crer aplicaciones que dirijan al crecimiento mutuo.
+			</h2>
+			<ul>
+				<li>
+					<a href="https://www.linkedin.com/in/jmachruiz/">
+						<LinkedInIcon class="w-6 h-6"/>
+					LinkedIn</a 
+					>
+				</li>
+			</ul>
+		</section>
+	</main>
+
+
 </Layout>
