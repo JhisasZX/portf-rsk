@@ -1,0 +1,44 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+const EXPERIENCE = [
+  {
+    date: "Actualmente...",
+    title: "IT Support and Infrastructure Analyst",
+    company: "Cascada S.A.",
+    description:
+      "Optimización de infraestructura de red mediante la configuración avanzada",
+    link: "https://www.linkedin.com/in/jmachruiz/",
+  },
+  {
+    date: "July-November-2025",
+    title: "Tech Lead Mobile",
+    company: "Start Up FAVORCITO",
+    description:
+      "Lideré el desarrollo y la implementación de nuevas funcionalidades para las aplicaciones móviles de Favorcito, dirigidas tanto a clientes como a estudiantes.",
+  },
+  {
+    date: "April-June-2025",
+    title: "Junio Front-End dev",
+    company: "Start Up FAVORCITO",
+    description:
+      "Participación activa en el desarrollo y la funcionalidad de aplicaciones móviles para estudiantes y clientes utilizando Flutter..",
+  },
+  {
+    date: "March 2024-March 2025",
+    title: "IT Support",
+    company: "Cerveceria Boliviana Nacional",
+    description:
+      "Configuración y mantenimiento de PCs en dominio, reforzando la seguridad y la conectividad de la red corporativa.",
+  },
+]
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>
