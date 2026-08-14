@@ -1,14 +1,18 @@
+---
+const pathname = Astro.url.pathname;
+const isEn = pathname.startsWith('/en');
+---
 <header class="flex justify-between items-center py-5 max-w-6xl mx-auto px-4 w-full z-50">
     <nav class="flex flex-row gap-x-10 opacity-80 text-sm font-medium">
-        <a href="#top" class="hover:text-purple-400 transition-colors">Home</a>
-        <a href="#experiencia" class="hover:text-purple-400 transition-colors">Experience</a>
-        <a href="#stack" class="hover:text-purple-400 transition-colors">Stack</a>
-        <a href="#proyectos" class="hover:text-purple-400 transition-colors">Projects</a>
-        <a href="#contacto" class="hover:text-purple-400 transition-colors">Contact</a>
+        <a href={isEn ? "/en#top" : "#top"} class="hover:text-purple-400 transition-colors">{isEn ? 'Home' : 'Inicio'}</a>
+        <a href={isEn ? "/en#experiencia" : "#experiencia"} class="hover:text-purple-400 transition-colors">{isEn ? 'Experience' : 'Experiencia'}</a>
+        <a href={isEn ? "/en#stack" : "#stack"} class="hover:text-purple-400 transition-colors">Stack</a>
+        <a href={isEn ? "/en#proyectos" : "#proyectos"} class="hover:text-purple-400 transition-colors">{isEn ? 'Projects' : 'Proyectos'}</a>
+        <a href={isEn ? "/en#contacto" : "#contacto"} class="hover:text-purple-400 transition-colors">{isEn ? 'Contact' : 'Contacto'}</a>
     </nav>
     <div class="flex items-center gap-2 text-sm font-semibold opacity-80">
-        <span class="text-white">ES</span>
+        <a href="/" class={isEn ? "text-neutral-400 hover:text-white transition-colors" : "text-white pointer-events-none"}>ES</a>
         <span class="text-neutral-500">/</span>
-        <a href="/en" class="text-neutral-400 hover:text-white transition-colors">EN</a>
+        <a href="/en" class={isEn ? "text-white pointer-events-none" : "text-neutral-400 hover:text-white transition-colors"}>EN</a>
     </div>
 </header>
