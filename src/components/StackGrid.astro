@@ -1,0 +1,42 @@
+---
+// StackGrid.astro
+const STACK = [
+  {
+    category: "Mobile & Logic",
+    items: ["Flutter", "Dart", "Firebase Studio"],
+    color: "from-blue-500/20 to-cyan-500/5",
+    border: "group-hover:border-blue-500/50"
+  },
+  {
+    category: "Web & Frontend",
+    items: ["Astro", "Tailwind CSS", "JavaScript", "Figma"],
+    color: "from-orange-500/20 to-pink-500/5",
+    border: "group-hover:border-orange-500/50"
+  },
+  {
+    category: "Data & Architecture",
+    items: ["MySQL", "SQL", "REST APIs", "Postman"],
+    color: "from-emerald-500/20 to-green-500/5",
+    border: "group-hover:border-emerald-500/50"
+  }
+];
+---
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  {STACK.map((group) => (
+    <div class={`group relative p-8 rounded-[2rem] bg-neutral-900/40 backdrop-blur-sm border border-white/5 overflow-hidden transition-all duration-500 hover:-translate-y-2 ${group.border}`}>
+      <div class={`absolute inset-0 bg-gradient-to-br ${group.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}></div>
+      
+      <h3 class="text-xl font-bold text-white mb-6 relative z-10">{group.category}</h3>
+      
+      <ul class="flex flex-col gap-3 relative z-10">
+        {group.items.map((item) => (
+          <li class="text-neutral-400 font-medium flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-white/60 transition-colors"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>

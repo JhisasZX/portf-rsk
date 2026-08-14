@@ -1,107 +1,157 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Badge from "../components/Badge.astro";
 import LinkedInIcon from "../components/icons/linkedin_icon.astro";
-import SocialPill from "../components/Social_pill.astro";
 import GithubIcon from "../components/icons/github_icon.astro";
 import InstagramIcon from "../components/icons/instagram_icon.astro";
-import MailIcon from "../components/icons/mail_icon.astro";
-import CalendarIcon from "../components/icons/calendar_icon.astro";
+import SpotifyIcon from "../components/icons/spotify_icon.astro";
 import SectionContainer from "../components/SectionContainer.astro";
 import Experience from "../components/Experience.astro";
-import TrustBar from "../components/TrustBar.astro";
 import Projects from "../components/Projects.astro";
-import Talks from "../components/Talks.astro";
+import StackGrid from "../components/StackGrid.astro";
 ---
 
 <Layout
   title="Portfolio Jesús Machicado - Desarrollador mobile"
   description="contacta con Jesús Machicado"
 >
-  <main class="px-4">
-    <SectionContainer class="py-44 pb-32 reveal">
-      <img
-        class="rounded-full w-16 h-16 mb-6 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
-        src="https://res.cloudinary.com/dmegzyenk/image/upload/v1763726957/me_cs_doqcyr.jpg"
-        alt="Jhisas photo"
+  <!-- Redes Sociales Flotantes -->
+  <div class="fixed bottom-8 right-8 z-50 flex flex-col gap-4">
+    <a
+      href="https://github.com/JhisasZX"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group relative p-3 bg-neutral-900/50 backdrop-blur-md border border-white/10 rounded-full hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 transition-all duration-300"
+    >
+      <!-- AQUI VA TU LINK DE GITHUB -->
+      <GithubIcon class="w-5 h-5 text-neutral-400 group-hover:text-white" />
+    </a>
+
+    <a
+      href="https://www.linkedin.com/in/jmachruiz/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group relative p-3 bg-neutral-900/50 backdrop-blur-md border border-white/10 rounded-full hover:bg-blue-500/20 hover:border-blue-500/50 hover:-translate-y-1 transition-all duration-300"
+    >
+      <!-- AQUI VA TU LINK DE LINKEDIN -->
+      <LinkedInIcon
+        class="w-5 h-5 text-neutral-400 group-hover:text-blue-400"
       />
+    </a>
+
+    <a
+      href="https://www.instagram.com/jhisas_zx/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group relative p-3 bg-neutral-900/50 backdrop-blur-md border border-white/10 rounded-full hover:bg-pink-500/20 hover:border-pink-500/50 hover:-translate-y-1 transition-all duration-300"
+    >
+      <!-- AQUI VA TU LINK DE INSTAGRAM -->
+      <InstagramIcon
+        class="w-5 h-5 text-neutral-400 group-hover:text-pink-400"
+      />
+    </a>
+
+    <a
+      href="https://open.spotify.com/user/jhisasxt?si=6bf9e84697e344ba"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group relative p-3 bg-neutral-900/50 backdrop-blur-md border border-white/10 rounded-full hover:bg-[#1DB954]/20 hover:border-[#1DB954]/50 hover:-translate-y-1 transition-all duration-300"
+    >
+      <!-- ENLACE SPOTIFY CONFIGURADO -->
+      <div
+        class="absolute right-full mr-4 top-1/2 -translate-y-1/2 px-3 py-1.5 bg-[#1DB954]/10 text-[#1DB954] border border-[#1DB954]/20 rounded-lg text-xs font-semibold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none backdrop-blur-md"
+      >
+        Escucha conmigo 🎧
+      </div>
+      <SpotifyIcon
+        class="w-5 h-5 text-neutral-400 group-hover:text-[#1DB954]"
+      />
+    </a>
+  </div>
+
+  <main class="px-4 max-w-6xl mx-auto">
+    <!-- HERO SECTION -->
+    <SectionContainer
+      class="min-h-screen flex flex-col justify-center py-20 relative z-10 reveal"
+    >
+      <div
+        class="mb-4 inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-medium text-neutral-400 tracking-wider"
+      >
+        <span class="relative flex h-2 w-2">
+          <span
+            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"
+          ></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"
+          ></span>
+        </span>
+        AVAILABLE FOR NEW OPPORTUNITIES
+      </div>
+
       <h1
-        class="text-white text-5xl md:text-6xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10 tracking-tight"
+        class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-white leading-[1.1] mb-8"
       >
-        ¡Hola! Soy Jesús
-        <a
-          href="https://calendar.app.google/PisvHNBWJNijQxjy7"
-          target="_blank"
-          rel="noopener"
-          class="flex justify-center items-center ml-2"
+        code with logic,<br />
+        <span
+          class="font-playfair italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-pink-300 to-orange-300"
+          >build with impact.</span
         >
-          <Badge>
-            <CalendarIcon class="w-4 h-4 mr-1.5" />
-            Agendar cita
-          </Badge>
-        </a>
       </h1>
-      <h2
-        class="text-xl md:text-2xl text-wrap max-w-[800px] text-gray-300 leading-relaxed"
+
+      <p
+        class="text-xl md:text-2xl text-neutral-400 max-w-3xl leading-relaxed font-light"
       >
-        <span>+2 años de experiencia.</span>
-        <span class="text-yellow-200/90 font-medium"
-          >Mobile Tech Lead (Flutter)</span
-        >
-        y
-        <span class="text-purple-300/90 font-medium"
-          >Analista de Infraestructura IT</span
-        >. De La Paz,
-        <span class="text-red-400/90">Bo</span><span class="text-yellow-300/90"
-          >li</span
-        ><span class="text-green-400/90">via</span>.
-        <span class="opacity-80 block mt-2"
-          >Especializado en crear soluciones robustas para el crecimiento real.</span
-        >
-      </h2>
-      <nav class="flex flex-wrap gap-4 mt-10">
-        <SocialPill href="https://www.linkedin.com/in/jmachruiz/">
-          <LinkedInIcon class="w-5 h-5" />
-          LinkedIn
-        </SocialPill>
-        <SocialPill href="https://github.com/JhisasZX">
-          <GithubIcon class="w-5 h-5" />
-          GitHub
-        </SocialPill>
-        <SocialPill href="https://www.instagram.com/jhisas_zx/">
-          <InstagramIcon class="w-5 h-5" />
-          Instagram
-        </SocialPill>
-        <SocialPill href="mailto:jhxtone@gmail.com">
-          <MailIcon class="w-5 h-5" />
-          jhxtone@gmail.com
-        </SocialPill>
-      </nav>
+        Hi, my name is <span class="text-white font-medium"
+          >Jesús Machicado</span
+        >. <br />
+        Systems Engineer & Mobile Developer (Flutter). Especializado en crear soluciones
+        escalables, arquitecturas offline-first y experiencias de usuario impecables.
+      </p>
     </SectionContainer>
 
-    <SectionContainer class="pb-32 reveal">
-      <TrustBar />
-    </SectionContainer>
-
+    <!-- DEV CUT EXPERIENCE -->
     <SectionContainer class="pb-44 reveal" id="experiencia">
-      <h2 class="text-3xl font-bold mb-12 flex items-center gap-x-3">
-        Experiencia laboral
+      <h2 class="text-3xl md:text-5xl font-playfair italic mb-16 text-white/90">
+        Experience.
       </h2>
       <Experience />
     </SectionContainer>
 
+    <!-- TECH STACK -->
+    <SectionContainer class="pb-44 reveal" id="stack">
+      <h2 class="text-3xl md:text-5xl font-playfair italic mb-16 text-white/90">
+        Tech Stack.
+      </h2>
+      <StackGrid />
+    </SectionContainer>
+
+    <!-- PROYECTOS -->
     <SectionContainer class="pb-44 reveal" id="proyectos">
-      <h2 class="text-3xl font-bold mb-12 flex items-center gap-x-3">
-        Proyectos Destacados
+      <h2 class="text-3xl md:text-5xl font-playfair italic mb-16 text-white/90">
+        Selected Works.
       </h2>
       <Projects />
     </SectionContainer>
 
-    <SectionContainer class="pb-44 reveal" id="comunidad">
-      <h2 class="text-3xl font-bold mb-12 flex items-center gap-x-3">
-        Charlas y Comunidad
+    <!-- ABOUT ME / CTA -->
+    <SectionContainer
+      class="pb-44 pt-20 reveal border-t border-white/10 text-center"
+    >
+      <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-8">
+        Let's build together.
       </h2>
-      <Talks />
+      <p
+        class="text-xl text-neutral-400 max-w-2xl mx-auto mb-12 leading-relaxed"
+      >
+        Siempre abierto a colaborar, explorar nuevas ideas y resolver problemas
+        complejos con código.
+      </p>
+      <a
+        href="https://www.linkedin.com/in/jmachruiz/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:scale-105 transition-all duration-300 glow-card hover:border-white/20"
+      >
+        Ver mi trayectoria completa en LinkedIn &rarr;
+      </a>
     </SectionContainer>
   </main>
 </Layout>

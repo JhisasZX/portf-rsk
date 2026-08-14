@@ -1,44 +1,31 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro"
+
 const EXPERIENCE = [
   {
-    date: "Actualmente...",
-    title: "IT Support and Infrastructure Analyst",
-    company: "Cascada S.A.",
-    description:
-      "Optimización de infraestructura de red mediante la configuración avanzada",
-    link: "https://www.linkedin.com/in/jmachruiz/",
+    date: "Nov 2025 - Actualidad",
+    title: "Development and Maintenance Analyst",
+    company: "La Cascada S.A.",
+    description: "Desarrollo de aplicaciones móviles corporativas. Lideré la creación desde cero de un CRM interno (Proyecto SIC) para el empadronamiento y preventa MKT, e implementé arquitecturas robustas offline-first para garantizar el rendimiento en áreas con conectividad inestable.",
   },
   {
-    date: "Julio-Noviembre-2025",
-    title: "Tech Lead Mobile",
-    company: "Start Up FAVORCITO",
-    description:
-      "Lideré el desarrollo y la implementación de nuevas funcionalidades para las aplicaciones móviles de Favorcito, dirigidas tanto a clientes como a estudiantes.",
-  },
-  {
-    date: "Abril -Junio-2025",
-    title: "Junio Front-End dev",
-    company: "Start Up FAVORCITO",
-    description:
-      "Participación activa en el desarrollo y la funcionalidad de aplicaciones móviles para estudiantes y clientes utilizando Flutter.",
-  },
-  {
-    date: "Marzo 2024-Marzo 2025",
-    title: "IT Support",
-    company: "Cerveceria Boliviana Nacional",
-    description:
-      "Configuración y mantenimiento de PCs en dominio, reforzando la seguridad y la conectividad de la red corporativa.",
-  },
+    date: "Abr 2025 - Nov 2025",
+    title: "Tech Lead Mobile & Frontend Dev",
+    company: "Start Up Favorcito",
+    description: "Evolución rápida de Frontend Dev a Tech Lead. Lideré el desarrollo e implementación de nuevas features para las apps de clientes y estudiantes, manteniendo la plataforma a la vanguardia con las últimas tecnologías del ecosistema Flutter.",
+  }
 ]
 ---
 
-<ol class="relative mt-16">
+<div class="relative mt-16 border-l border-white/10 ml-3 md:ml-6">
   {
     EXPERIENCE.map((experience) => (
-      <li class="">
+      <div class="mb-14 ml-8 md:ml-12 group">
+        <span class="absolute flex items-center justify-center w-6 h-6 bg-neutral-900 rounded-full -left-[12px] ring-4 ring-[#0a0a0a] border border-purple-500/30 group-hover:bg-purple-500/20 group-hover:border-purple-400 group-hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all duration-300">
+          <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
+        </span>
         <ExperienceItem {...experience} />
-      </li>
+      </div>
     ))
   }
-</ol>
+</div>
