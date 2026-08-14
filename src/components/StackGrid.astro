@@ -1,21 +1,24 @@
 ---
 // StackGrid.astro
+const pathname = Astro.url.pathname;
+const isEn = pathname.startsWith('/en');
+
 const STACK = [
   {
-    category: "Mobile & Logic",
-    items: ["Flutter", "Dart", "Firebase Studio"],
+    category: isEn ? "Mobile & Frontend" : "Mobile y Frontend",
+    items: ["Flutter", "Dart", "React", "JS", "HTML/CSS", "Figma"],
     color: "from-blue-500/20 to-cyan-500/5",
     border: "group-hover:border-blue-500/50"
   },
   {
-    category: "Web & Frontend",
-    items: ["Astro", "Tailwind CSS", "JavaScript", "Figma"],
+    category: isEn ? "Backend & Cloud" : "Backend y Nube",
+    items: ["Node.js", "Python", "SQL", "MySQL", "GCP", "Active Directory"],
     color: "from-orange-500/20 to-pink-500/5",
     border: "group-hover:border-orange-500/50"
   },
   {
-    category: "Data & Architecture",
-    items: ["MySQL", "SQL", "REST APIs", "Postman"],
+    category: isEn ? "Tools & Workflow" : "Herramientas y Flujo",
+    items: ["GitHub", "n8n", "Postman", "Cursor", "Jira", "ClickUp"],
     color: "from-emerald-500/20 to-green-500/5",
     border: "group-hover:border-emerald-500/50"
   }

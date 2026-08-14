@@ -1,18 +1,21 @@
 ---
 import ExperienceItem from "./ExperienceItem.astro"
 
+const pathname = Astro.url.pathname;
+const isEn = pathname.startsWith('/en');
+
 const EXPERIENCE = [
   {
-    date: "Nov 2025 - Actualidad",
+    date: isEn ? "Nov 2025 - Present" : "Nov 2025 - Actualidad",
     title: "Development and Maintenance Analyst",
     company: "La Cascada S.A.",
-    description: "Desarrollo de aplicaciones móviles corporativas. Lideré la creación desde cero de un CRM interno (Proyecto SIC) para el empadronamiento y preventa MKT, e implementé arquitecturas robustas offline-first para garantizar el rendimiento en áreas con conectividad inestable.",
+    description: isEn ? "Development of corporate mobile apps. Led the scratch creation of an internal CRM (SIC Project) for marketing presales, implementing robust offline-first architectures to guarantee performance in areas with unstable connectivity." : "Desarrollo de aplicaciones móviles corporativas. Lideré la creación desde cero de un CRM interno (Proyecto SIC) para el empadronamiento y preventa MKT, e implementé arquitecturas robustas offline-first para garantizar el rendimiento en áreas con conectividad inestable.",
   },
   {
-    date: "Abr 2025 - Nov 2025",
+    date: isEn ? "Apr 2025 - Nov 2025" : "Abr 2025 - Nov 2025",
     title: "Tech Lead Mobile & Frontend Dev",
     company: "Start Up Favorcito",
-    description: "Evolución rápida de Frontend Dev a Tech Lead. Lideré el desarrollo e implementación de nuevas features para las apps de clientes y estudiantes, manteniendo la plataforma a la vanguardia con las últimas tecnologías del ecosistema Flutter.",
+    description: isEn ? "Rapid evolution from Frontend Dev to Tech Lead. Led the development and implementation of new features for client and student apps, keeping the platform at the forefront with the latest technologies of the Flutter ecosystem." : "Evolución rápida de Frontend Dev a Tech Lead. Lideré el desarrollo e implementación de nuevas features para las apps de clientes y estudiantes, manteniendo la plataforma a la vanguardia con las últimas tecnologías del ecosistema Flutter.",
   }
 ]
 ---

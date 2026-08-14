@@ -1,18 +1,21 @@
 ---
 import ProjectItem from "./ProjectItem.astro";
 
+const pathname = Astro.url.pathname;
+const isEn = pathname.startsWith('/en');
+
 const PROJECTS = [
   {
-    title: "App de Seguridad y Control Operativo",
-    description: "Liderazgo en el desarrollo de una aplicación móvil integral para la gestión de bitácoras de camiones y protocolos de guardias de seguridad.",
-    role: "Liderazgo / Desarrollo",
-    tags: ["Flutter", "Figma (UI/UX)", "MySQL Workbench"],
+    title: isEn ? "Security & Operational Control App" : "App de Seguridad y Control Operativo",
+    description: isEn ? "Lead the development of a comprehensive mobile application for managing truck logs and security guard protocols." : "Liderazgo en el desarrollo de una aplicación móvil integral para la gestión de bitácoras de camiones y protocolos de guardias de seguridad.",
+    role: isEn ? "Lead / Developer" : "Liderazgo / Desarrollo",
+    tags: ["Flutter", "Figma (UI/UX)", "MySQL"],
   },
   {
-    title: "Proyecto SIC Fase 3",
-    description: "Refactorización profunda y migración de una aplicación móvil desde una arquitectura legacy hacia una nueva estructura escalable, incluyendo sincronización de dependencias y renombramiento de paquetes.",
-    role: "Arquitecto / Desarrollador",
-    tags: ["Flutter", "Arquitectura de Software"],
+    title: isEn ? "SIC Project Phase 3" : "Proyecto SIC Fase 3",
+    description: isEn ? "Deep refactoring and migration of a mobile app from a legacy architecture to a new scalable structure, including dependency synchronization and package renaming." : "Refactorización profunda y migración de una aplicación móvil desde una arquitectura legacy hacia una nueva estructura escalable, incluyendo sincronización de dependencias y renombramiento de paquetes.",
+    role: isEn ? "Architect / Developer" : "Arquitecto / Desarrollador",
+    tags: ["Flutter", "Software Architecture"],
   }
 ];
 ---
