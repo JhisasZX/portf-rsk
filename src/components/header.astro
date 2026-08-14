@@ -2,17 +2,63 @@
 const pathname = Astro.url.pathname;
 const isEn = pathname.startsWith('/en');
 ---
-<header class="flex justify-between items-center py-5 max-w-6xl mx-auto px-4 w-full z-50">
-    <nav class="flex flex-row gap-x-10 opacity-80 text-sm font-medium">
+<header class="flex justify-between items-center py-5 max-w-6xl mx-auto px-4 w-full z-[100] relative">
+    <!-- DESKTOP NAV -->
+    <nav class="hidden md:flex flex-row gap-x-10 opacity-80 text-sm font-medium">
         <a href={isEn ? "/en#top" : "#top"} class="hover:text-purple-400 transition-colors">{isEn ? 'Home' : 'Inicio'}</a>
         <a href={isEn ? "/en#experiencia" : "#experiencia"} class="hover:text-purple-400 transition-colors">{isEn ? 'Experience' : 'Experiencia'}</a>
         <a href={isEn ? "/en#stack" : "#stack"} class="hover:text-purple-400 transition-colors">Stack</a>
         <a href={isEn ? "/en#proyectos" : "#proyectos"} class="hover:text-purple-400 transition-colors">{isEn ? 'Projects' : 'Proyectos'}</a>
         <a href={isEn ? "/en#contacto" : "#contacto"} class="hover:text-purple-400 transition-colors">{isEn ? 'Contact' : 'Contacto'}</a>
     </nav>
-    <div class="flex items-center gap-2 text-sm font-semibold opacity-80">
-        <a href="/" class={isEn ? "text-neutral-400 hover:text-white transition-colors" : "text-white pointer-events-none"}>ES</a>
-        <span class="text-neutral-500">/</span>
-        <a href="/en" class={isEn ? "text-white pointer-events-none" : "text-neutral-400 hover:text-white transition-colors"}>EN</a>
+
+    <!-- LANG SWITCH & MOBILE BTN -->
+    <div class="flex items-center gap-6 ml-auto z-[100]">
+        <div class="flex items-center gap-2 text-sm font-semibold opacity-80">
+            <a href="/" class={isEn ? "text-neutral-400 hover:text-white transition-colors" : "text-white pointer-events-none"}>ES</a>
+            <span class="text-neutral-500">/</span>
+            <a href="/en" class={isEn ? "text-white pointer-events-none" : "text-neutral-400 hover:text-white transition-colors"}>EN</a>
+        </div>
+
+        <button id="mobile-menu-btn" class="md:hidden text-white p-1 focus:outline-none" aria-label="Menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="close-icon hidden"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    </div>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="mobile-menu" class="fixed inset-0 bg-[#0a0a0a]/95 backdrop-blur-2xl z-[90] flex flex-col items-center justify-center translate-x-full transition-transform duration-300 md:hidden">
+        <img src="https://res.cloudinary.com/dmegzyenk/image/upload/v1763726957/me_cs_doqcyr.jpg" alt="Jesús Machicado" class="w-28 h-28 rounded-full object-cover mb-10 border border-white/10 shadow-[0_0_30px_rgba(168,85,247,0.3)]" />
+        
+        <nav class="flex flex-col items-center gap-y-8 text-2xl font-light tracking-wide">
+            <a href={isEn ? "/en#top" : "#top"} class="mobile-link hover:text-purple-400 transition-colors">{isEn ? 'Home' : 'Inicio'}</a>
+            <a href={isEn ? "/en#experiencia" : "#experiencia"} class="mobile-link hover:text-purple-400 transition-colors">{isEn ? 'Experience' : 'Experiencia'}</a>
+            <a href={isEn ? "/en#stack" : "#stack"} class="mobile-link hover:text-purple-400 transition-colors">Stack</a>
+            <a href={isEn ? "/en#proyectos" : "#proyectos"} class="mobile-link hover:text-purple-400 transition-colors">{isEn ? 'Projects' : 'Proyectos'}</a>
+            <a href={isEn ? "/en#contacto" : "#contacto"} class="mobile-link hover:text-purple-400 transition-colors">{isEn ? 'Contact' : 'Contacto'}</a>
+        </nav>
     </div>
 </header>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const menuIcon = btn?.querySelector('.menu-icon');
+    const closeIcon = btn?.querySelector('.close-icon');
+    const links = document.querySelectorAll('.mobile-link');
+
+    const toggleMenu = () => {
+      menu?.classList.toggle('translate-x-full');
+      menuIcon?.classList.toggle('hidden');
+      closeIcon?.classList.toggle('hidden');
+      document.body.classList.toggle('overflow-hidden');
+    };
+
+    btn?.addEventListener('click', toggleMenu);
+    
+    links.forEach(link => {
+      link.addEventListener('click', toggleMenu);
+    });
+  });
+</script>

@@ -15,7 +15,7 @@ import StackGrid from "../../components/StackGrid.astro";
   description="contacta con Jesús Machicado"
 >
   <!-- Redes Sociales Flotantes -->
-  <div class="fixed bottom-8 right-8 z-50 flex flex-col gap-4">
+  <div class="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 flex flex-col gap-3 md:gap-4 scale-75 md:scale-100 origin-bottom-right">
     <a
       href="https://github.com/JhisasZX"
       target="_blank"
@@ -79,7 +79,7 @@ import StackGrid from "../../components/StackGrid.astro";
       </a>
 
       <h1
-        class="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-white leading-[1.1] mb-8"
+        class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-white leading-[1.1] mb-6 md:mb-8"
       >
         code with logic,<br />
         <span
@@ -99,24 +99,24 @@ import StackGrid from "../../components/StackGrid.astro";
     </SectionContainer>
 
     <!-- DEV CUT EXPERIENCE -->
-    <SectionContainer class="pb-44 reveal" id="experiencia">
-      <h2 class="text-3xl md:text-5xl font-playfair italic mb-16 text-white/90">
+    <SectionContainer class="pb-24 md:pb-44 reveal" id="experiencia">
+      <h2 class="text-3xl md:text-5xl font-playfair italic mb-8 md:mb-16 text-white/90">
         Experience.
       </h2>
       <Experience />
     </SectionContainer>
 
     <!-- TECH STACK -->
-    <SectionContainer class="pb-44 reveal" id="stack">
-      <h2 class="text-3xl md:text-5xl font-playfair italic mb-16 text-white/90">
+    <SectionContainer class="pb-24 md:pb-44 reveal" id="stack">
+      <h2 class="text-3xl md:text-5xl font-playfair italic mb-8 md:mb-16 text-white/90">
         Tech Stack.
       </h2>
       <StackGrid />
     </SectionContainer>
 
     <!-- PROYECTOS -->
-    <SectionContainer class="pb-44 reveal" id="proyectos">
-      <h2 class="text-3xl md:text-5xl font-playfair italic mb-16 text-white/90">
+    <SectionContainer class="pb-24 md:pb-44 reveal" id="proyectos">
+      <h2 class="text-3xl md:text-5xl font-playfair italic mb-8 md:mb-16 text-white/90">
         Selected Works.
       </h2>
       <Projects />
@@ -125,9 +125,9 @@ import StackGrid from "../../components/StackGrid.astro";
     <!-- ABOUT ME / CTA -->
     <SectionContainer
       id="contacto"
-      class="pb-44 pt-20 reveal border-t border-white/10 text-center"
+      class="pb-24 pt-12 md:pb-44 md:pt-20 reveal border-t border-white/10 text-center"
     >
-      <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-8">
+      <h2 class="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-8">
         Let's build together.
       </h2>
       <p
@@ -140,12 +140,12 @@ import StackGrid from "../../components/StackGrid.astro";
         href="https://www.linkedin.com/in/jmachruiz/"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:scale-105 transition-all duration-300 glow-card hover:border-white/20"
+        class="inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 text-sm md:text-base font-medium text-white bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:scale-105 transition-all duration-300 glow-card hover:border-white/20"
       >
         See my full trajectory on LinkedIn &rarr;
       </a>
       
-      <p class="mt-24 text-sm font-playfair italic text-neutral-600">"bloom to death."</p>
+      <p class="mt-16 md:mt-24 text-sm font-playfair italic text-neutral-600">"bloom to death."</p>
     </SectionContainer>
   </main>
 </Layout>
