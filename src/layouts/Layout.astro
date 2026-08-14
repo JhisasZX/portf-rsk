@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import '@fontsource-variable/onest';
 import '../styles/global.css';
 import Header from "../components/header.astro";
@@ -20,27 +21,41 @@ const{ description, title } = Astro.props
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ClientRouter />
   </head>
-  <body class="relative min-h-screen">
-    <div
-      class="absolute inset-0 z-[-2] bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
-    ></div>
+  <body class="relative min-h-screen font-sans selection:bg-purple-500/30">
+    <div class="fixed inset-0 z-[-2] bg-[#030303] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.15),rgba(255,255,255,0))]"></div>
     <Header />
     <slot />
+
+    <script>
+      document.addEventListener('astro:page-load', () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+            }
+          });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach((el) => {
+          observer.observe(el);
+        });
+      });
+    </script>
   </body>
 </html>
 
 <style is:global>
   :root {
-	color-scheme: light dark;
+	color-scheme: dark;
   }
   html {
-    font-family:
-      "Onest Variable",
-      system-ui, sans-serif;
+    font-family: "Onest Variable", system-ui, sans-serif;
+    scroll-behavior: smooth;
   }
   body {
-    background: #050505;
+    background: transparent;
     display: flex;
 	flex-direction: column;
 	min-height: 100vh;

@@ -1,0 +1,24 @@
+---
+import ProjectItem from "./ProjectItem.astro";
+
+const PROJECTS = [
+  {
+    title: "App de Seguridad y Control Operativo",
+    description: "Liderazgo en el desarrollo de una aplicación móvil integral para la gestión de bitácoras de camiones y protocolos de guardias de seguridad.",
+    role: "Liderazgo / Desarrollo",
+    tags: ["Flutter", "Figma (UI/UX)", "MySQL Workbench"],
+  },
+  {
+    title: "Proyecto SIC Fase 3",
+    description: "Refactorización profunda y migración de una aplicación móvil desde una arquitectura legacy hacia una nueva estructura escalable, incluyendo sincronización de dependencias y renombramiento de paquetes.",
+    role: "Arquitecto / Desarrollador",
+    tags: ["Flutter", "Arquitectura de Software"],
+  }
+];
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+  {PROJECTS.map((project) => (
+    <ProjectItem {...project} />
+  ))}
+</div>

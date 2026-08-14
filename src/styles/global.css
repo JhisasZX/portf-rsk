@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.glow-card {
+  background: rgba(23, 23, 23, 0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 2rem;
+  padding: 2rem;
+  transition: all 0.4s ease-in-out;
+}
+
+.glow-card:hover {
+  border-color: rgba(168, 85, 247, 0.3);
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.15);
+  transform: scale(1.02);
+}

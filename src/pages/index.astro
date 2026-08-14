@@ -1,5 +1,4 @@
 ---
-import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
 import Badge from "../components/Badge.astro";
 import LinkedInIcon from "../components/icons/linkedin_icon.astro";
@@ -10,26 +9,31 @@ import MailIcon from "../components/icons/mail_icon.astro";
 import CalendarIcon from "../components/icons/calendar_icon.astro";
 import SectionContainer from "../components/SectionContainer.astro";
 import Experience from "../components/Experience.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import TrustBar from "../components/TrustBar.astro";
+import Projects from "../components/Projects.astro";
+import Talks from "../components/Talks.astro";
 ---
 
-<Layout title="Portfolio Jesús Machicado - Desarrollador mobile"
-description="contacta con Jesús Machicado">
-  <main>
-    <SectionContainer class="py-30 pb-15">
+<Layout
+  title="Portfolio Jesús Machicado - Desarrollador mobile"
+  description="contacta con Jesús Machicado"
+>
+  <main class="px-4">
+    <SectionContainer class="py-44 pb-32 reveal">
       <img
-        class="rounded-full w-12 h-12 mb-4"
+        class="rounded-full w-16 h-16 mb-6 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
         src="https://res.cloudinary.com/dmegzyenk/image/upload/v1763726957/me_cs_doqcyr.jpg"
         alt="Jhisas photo"
       />
-      <h1 class="text-white text-5xl font-bold flex flex-row gap-x-4 pb-4">
-        ¡Hola! Soy Jesús <a
+      <h1
+        class="text-white text-5xl md:text-6xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10 tracking-tight"
+      >
+        ¡Hola! Soy Jesús
+        <a
           href="https://calendar.app.google/PisvHNBWJNijQxjy7"
           target="_blank"
           rel="noopener"
-          class="flex justify-center items-center"
+          class="flex justify-center items-center ml-2"
         >
           <Badge>
             <CalendarIcon class="w-4 h-4 mr-1.5" />
@@ -37,36 +41,67 @@ description="contacta con Jesús Machicado">
           </Badge>
         </a>
       </h1>
-      <h2 class="text-2xl text-wrap max-w-[700px] text-gray-300">
+      <h2
+        class="text-xl md:text-2xl text-wrap max-w-[800px] text-gray-300 leading-relaxed"
+      >
         <span>+2 años de experiencia.</span>
-        <span class="text-yellow-200/90">Desarrollador Mobile (Flutter)</span>
+        <span class="text-yellow-200/90 font-medium"
+          >Mobile Tech Lead (Flutter)</span
+        >
         y
-        <span class="text-purple-200/90">Analista de Infraestructura</span>.
-        De La Paz, 
-        <span class="text-red-400/90">Bo</span><span class="text-yellow-300/90">li</span><span class="text-green-400/90">via</span>.
-        <span class="opacity-85">Especializado en crear soluciones robustas para el crecimiento real.</span>
+        <span class="text-purple-300/90 font-medium"
+          >Analista de Infraestructura IT</span
+        >. De La Paz,
+        <span class="text-red-400/90">Bo</span><span class="text-yellow-300/90"
+          >li</span
+        ><span class="text-green-400/90">via</span>.
+        <span class="opacity-80 block mt-2"
+          >Especializado en crear soluciones robustas para el crecimiento real.</span
+        >
       </h2>
-      <nav class="flex gap-x-2 mt-6">
+      <nav class="flex flex-wrap gap-4 mt-10">
         <SocialPill href="https://www.linkedin.com/in/jmachruiz/">
-          <LinkedInIcon class="w-6 h-6" />
+          <LinkedInIcon class="w-5 h-5" />
           LinkedIn
         </SocialPill>
         <SocialPill href="https://github.com/JhisasZX">
-          <GithubIcon class="w-6 h-6" />
+          <GithubIcon class="w-5 h-5" />
           GitHub
         </SocialPill>
         <SocialPill href="https://www.instagram.com/jhisas_zx/">
-          <InstagramIcon class="w-6 h-6" />
+          <InstagramIcon class="w-5 h-5" />
           Instagram
         </SocialPill>
-        <SocialPill href="mailto:jhxtone@gmail.com"> <MailIcon class="w-6 h-6" />
+        <SocialPill href="mailto:jhxtone@gmail.com">
+          <MailIcon class="w-5 h-5" />
           jhxtone@gmail.com
         </SocialPill>
       </nav>
-	</SectionContainer>
-	  <SectionContainer>
-		<h2 class="text-2xl font-semibold mb-6">Experiencia laboral</h2>
-		<Experience />
-	  </SectionContainer>
+    </SectionContainer>
+
+    <SectionContainer class="pb-32 reveal">
+      <TrustBar />
+    </SectionContainer>
+
+    <SectionContainer class="pb-44 reveal" id="experiencia">
+      <h2 class="text-3xl font-bold mb-12 flex items-center gap-x-3">
+        Experiencia laboral
+      </h2>
+      <Experience />
+    </SectionContainer>
+
+    <SectionContainer class="pb-44 reveal" id="proyectos">
+      <h2 class="text-3xl font-bold mb-12 flex items-center gap-x-3">
+        Proyectos Destacados
+      </h2>
+      <Projects />
+    </SectionContainer>
+
+    <SectionContainer class="pb-44 reveal" id="comunidad">
+      <h2 class="text-3xl font-bold mb-12 flex items-center gap-x-3">
+        Charlas y Comunidad
+      </h2>
+      <Talks />
+    </SectionContainer>
   </main>
 </Layout>
