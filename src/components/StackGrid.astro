@@ -5,41 +5,51 @@ const isEn = pathname.startsWith('/en');
 
 const STACK = [
   {
-    category: isEn ? "Mobile & Frontend" : "Mobile y Frontend",
-    items: ["Flutter", "Dart", "React", "JS", "HTML/CSS", "Figma"],
-    color: "from-blue-500/20 to-cyan-500/5",
-    border: "group-hover:border-blue-500/50"
+    category: isEn ? "Mobile & Frontend" : "Mobile & Frontend",
+    description: isEn ? "Core development ecosystem" : "Ecosistema principal de desarrollo",
+    icon: "📱",
+    items: ["Flutter", "Dart", "React", "TypeScript", "JavaScript", "Tailwind CSS", "Figma (UI/UX)"],
+    gradient: "from-blue-500/10 via-cyan-500/5 to-transparent",
+    border: "hover:border-cyan-500/40"
   },
   {
-    category: isEn ? "Backend & Cloud" : "Backend y Nube",
-    items: ["Node.js", "Python", "SQL", "MySQL", "GCP", "Active Directory"],
-    color: "from-orange-500/20 to-pink-500/5",
-    border: "group-hover:border-orange-500/50"
+    category: isEn ? "Backend & Cloud" : "Backend & Nube",
+    description: isEn ? "Data engines and cloud services" : "Motores de datos y servicios cloud",
+    icon: "☁️",
+    items: ["Firebase", "Firestore", "Node.js", "Python", "SQL / MySQL", "GCP", "REST & WebSockets"],
+    gradient: "from-purple-500/10 via-pink-500/5 to-transparent",
+    border: "hover:border-purple-500/40"
   },
   {
-    category: isEn ? "Tools & Workflow" : "Herramientas y Flujo",
-    items: ["GitHub", "n8n", "Postman", "Cursor", "Jira", "ClickUp"],
-    color: "from-emerald-500/20 to-green-500/5",
-    border: "group-hover:border-emerald-500/50"
+    category: isEn ? "Architecture & Tools" : "Arquitectura & Herramientas",
+    description: isEn ? "Workflows and scalable engineering" : "Flujos y patrones de ingeniería",
+    icon: "⚡",
+    items: ["Clean Architecture", "BLoC & Signals", "Offline-First", "Git / GitHub", "Postman", "n8n", "Jira / ClickUp"],
+    gradient: "from-emerald-500/10 via-green-500/5 to-transparent",
+    border: "hover:border-emerald-500/40"
   }
 ];
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
   {STACK.map((group) => (
-    <div class={`group relative p-8 rounded-[2rem] bg-neutral-900/40 backdrop-blur-sm border border-white/5 overflow-hidden transition-all duration-500 hover:-translate-y-2 ${group.border}`}>
-      <div class={`absolute inset-0 bg-gradient-to-br ${group.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}></div>
+    <div class={`glow-card flex flex-col justify-between relative overflow-hidden group transition-all duration-500 hover:-translate-y-1.5 ${group.border}`}>
+      <!-- Ambient card glow -->
+      <div class={`absolute inset-0 bg-gradient-to-b ${group.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}></div>
       
-      <h3 class="text-xl font-bold text-white mb-6 relative z-10">{group.category}</h3>
+      <div class="relative z-10 mb-6">
+        <div class="text-2xl mb-3">{group.icon}</div>
+        <h3 class="text-xl font-bold text-white mb-1 tracking-tight">{group.category}</h3>
+        <p class="text-xs text-neutral-400 font-light">{group.description}</p>
+      </div>
       
-      <ul class="flex flex-col gap-3 relative z-10">
+      <div class="flex flex-wrap gap-2 relative z-10 mt-auto">
         {group.items.map((item) => (
-          <li class="text-neutral-400 font-medium flex items-center gap-3">
-            <span class="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-white/60 transition-colors"></span>
+          <span class="px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/10 text-neutral-300 text-xs md:text-sm font-medium hover:border-white/30 hover:text-white hover:bg-white/[0.08] hover:scale-105 transition-all duration-200 cursor-default">
             {item}
-          </li>
+          </span>
         ))}
-      </ul>
+      </div>
     </div>
   ))}
 </div>
