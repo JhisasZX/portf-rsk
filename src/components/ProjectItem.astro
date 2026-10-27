@@ -33,7 +33,14 @@ const { title, description, role, tags, badge, highlight, link } = Astro.props;
 
   <div class="mb-3">
     <h3 class="text-xl sm:text-2xl font-bold text-white mb-1 tracking-tight group-hover:text-purple-200 transition-colors">
-      {title}
+      {link ? (
+        <a href={link} target="_blank" rel="noopener noreferrer" class="hover:underline inline-flex items-center gap-1.5">
+          <span>{title}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-neutral-400 group-hover:text-purple-300 transition-colors"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+      ) : (
+        <span>{title}</span>
+      )}
     </h3>
     <p class="text-xs text-purple-400 font-semibold uppercase tracking-wider font-mono">
       {role}

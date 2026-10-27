@@ -1,43 +1,35 @@
 ---
-// Talks.astro
-const pathname = Astro.url.pathname;
-const isEn = pathname.startsWith('/en');
+import type { Talk } from "../data/portfolio";
+
+interface Props {
+  talk: Talk;
+}
+
+const { talk } = Astro.props;
 ---
 
 <div class="glow-card flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 bg-gradient-to-br from-neutral-900/90 via-purple-950/20 to-neutral-900/80 border border-purple-500/20 relative overflow-hidden group">
-  <!-- Subtle background glow -->
   <div class="absolute -right-20 -top-20 w-72 h-72 bg-purple-600/20 rounded-full blur-[100px] pointer-events-none group-hover:bg-purple-600/30 transition-all duration-700"></div>
 
   <div class="flex-1 z-10">
     <div class="inline-flex items-center gap-2 px-3 py-1 bg-purple-500/15 text-purple-300 text-xs font-semibold rounded-full border border-purple-500/30 mb-6 tracking-wider uppercase">
-      <span>🎙️ {isEn ? "Keynote & Speaker" : "Conferencia & Speaker"}</span>
+      <span>🎙️ {talk.badge}</span>
     </div>
     
     <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-4 tracking-tight">
-      {isEn 
-        ? "Breaking Hardware Limits with Flutter, AI & Firebase Studio" 
-        : "Rompiendo la barrera del hardware con Flutter, IA y Firebase Studio"}
+      {talk.title}
     </h3>
     
     <p class="text-neutral-300 text-base md:text-lg mb-8 max-w-2xl leading-relaxed">
-      {isEn 
-        ? "An architectural deep-dive into resource optimization, AI-augmented development workflows, and real-time cloud data engines to elevate cross-platform mobile apps beyond hardware limits." 
-        : "Una inmersión arquitectónica sobre optimización de recursos, flujos modernos de desarrollo potenciados con IA y motores en la nube para llevar el rendimiento móvil al siguiente nivel."}
+      {talk.description}
     </p>
 
     <div class="flex flex-wrap gap-2.5">
-      <span class="px-3.5 py-1.5 bg-black/50 text-purple-200 text-xs md:text-sm font-medium rounded-lg border border-purple-500/20 shadow-inner">
-        Flutter + AI
-      </span>
-      <span class="px-3.5 py-1.5 bg-black/50 text-neutral-300 text-xs md:text-sm font-medium rounded-lg border border-white/10 shadow-inner">
-        Firebase Studio
-      </span>
-      <span class="px-3.5 py-1.5 bg-black/50 text-neutral-300 text-xs md:text-sm font-medium rounded-lg border border-white/10 shadow-inner">
-        Offline Engines
-      </span>
-      <span class="px-3.5 py-1.5 bg-black/50 text-neutral-300 text-xs md:text-sm font-medium rounded-lg border border-white/10 shadow-inner">
-        High Performance DX
-      </span>
+      {talk.tags.map((tag, idx) => (
+        <span class={idx === 0 ? "px-3.5 py-1.5 bg-black/50 text-purple-200 text-xs md:text-sm font-medium rounded-lg border border-purple-500/20 shadow-inner" : "px-3.5 py-1.5 bg-black/50 text-neutral-300 text-xs md:text-sm font-medium rounded-lg border border-white/10 shadow-inner"}>
+          {tag}
+        </span>
+      ))}
     </div>
   </div>
 </div>

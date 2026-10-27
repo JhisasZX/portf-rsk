@@ -1,65 +1,16 @@
 ---
 import ProjectItem from "./ProjectItem.astro";
+import type { Project } from "../data/portfolio";
 
-const pathname = Astro.url.pathname;
-const isEn = pathname.startsWith('/en');
+interface Props {
+  projects: Project[];
+}
 
-const PROJECTS = [
-  {
-    title: "RouteAndo",
-    badge: isEn ? "Engineering Thesis" : "Tesis de Grado",
-    highlight: isEn ? "Real-Time Tracking" : "Tracking Satelital",
-    role: isEn ? "Lead Architect & Mobile Dev" : "Arquitecto Líder & Dev Mobile",
-    description: isEn 
-      ? "Comprehensive real-time school transportation tracking platform built on Clean Architecture. Features live sync with Cloud Firestore, high-precision telemetry via Google Maps API, multi-role access (drivers, parents, web dashboard), and edge AI inference support with TFLite."
-      : "Plataforma integral para seguimiento en tiempo real del transporte escolar. Diseñada bajo Clean Architecture, integra sincronización en vivo con Cloud Firestore, geolocalización de alta precisión con Google Maps API, gestión multiperfil (conductores, padres, administración) y soporte para inferencia local con TFLite.",
-    tags: ["Flutter", "Clean Architecture", "Firebase", "Google Maps API", "Provider", "TFLite"],
-  },
-  {
-    title: "Favorcito — On-Demand App",
-    badge: isEn ? "Commercial App" : "App Comercial",
-    highlight: isEn ? "Live Chat & Audio" : "Chat & Audio en Vivo",
-    role: isEn ? "Tech Lead Mobile & Frontend" : "Tech Lead Mobile & Frontend",
-    description: isEn
-      ? "On-demand mobile ecosystem built with Flutter. Features real-time Firebase chat messaging, in-app voice notes and audio streaming, fluid Lottie micro-interactions, and reactive state management powered by Signals."
-      : "Ecosistema móvil bajo demanda desarrollado en Flutter. Integra mensajería y chat en tiempo real con Firebase, notas de voz con streaming de audio, microinteracciones con Lottie y arquitectura reactiva con Signals.",
-    tags: ["Flutter", "Signals", "In-App Chat", "Lottie", "Audio Streaming", "Firebase"],
-  },
-  {
-    title: "ALAS - FinTech Platform",
-    badge: isEn ? "Hackathon Project" : "Proyecto Hackathon",
-    highlight: isEn ? "Web Platform" : "Plataforma Web",
-    role: isEn ? "Frontend Lead & UI/UX" : "Líder Frontend & UI/UX",
-    description: isEn
-      ? "FinTech platform connecting micro-investors with local business opportunities. Rapidly built during a hackathon using React, TypeScript, and Redux Toolkit, featuring interactive geospatial maps (Leaflet), fluid animations with Framer Motion, and AI-assisted legal contract previews."
-      : "Plataforma FinTech que conecta micro-inversionistas con oportunidades de negocio locales. Desarrollada en tiempo récord durante una hackathon con React, TypeScript y Redux Toolkit, con mapas interactivos (Leaflet), animaciones dinámicas con Framer Motion y previsualización de contratos legales asistidos por IA.",
-    tags: ["React", "TypeScript", "Redux Toolkit", "Leaflet", "Framer Motion", "Tailwind CSS"],
-  },
-  {
-    title: isEn ? "Security & Operational Control App" : "App de Seguridad y Control Operativo",
-    badge: isEn ? "Enterprise Logistics" : "Logística Corporativa",
-    highlight: isEn ? "Offline-First" : "Offline-First",
-    role: isEn ? "Lead / Mobile Developer" : "Liderazgo & Desarrollo Mobile",
-    description: isEn 
-      ? "Enterprise mobile solution for La Cascada S.A. automating entry control, truck dispatch logs, and security guard workflows. Engineered with an offline-first architecture for seamless operations in low-connectivity facilities with automated central sync."
-      : "Solución móvil empresarial para La Cascada S.A. que automatiza el control de accesos, bitácoras de camiones y protocolos de guardias de seguridad. Arquitectura offline-first para operación ininterrumpida en plantas con conectividad restringida y sincronización centralizada.",
-    tags: ["Flutter", "Offline-First", "Figma UI/UX", "MySQL", "Security Protocols"],
-  },
-  {
-    title: isEn ? "SIC Mobile CRM - Phase 3" : "Proyecto SIC Fase 3 - CRM Mobile",
-    badge: isEn ? "Core Architecture" : "Arquitectura & Refactor",
-    highlight: isEn ? "Scale & Migration" : "Escalabilidad",
-    role: isEn ? "Systems Architect & Dev" : "Arquitecto de Sistemas & Dev",
-    description: isEn 
-      ? "In-depth architectural refactor and migration of an enterprise mobile CRM from a legacy codebase into a clean, modular structure. Re-engineered offline synchronization pipelines, streamlined dependency graphs, and decoupled presales & marketing workflows."
-      : "Refactorización profunda y migración de aplicación móvil corporativa desde una arquitectura legacy hacia una estructura modular, escalable y mantenible. Sincronización de dependencias, modernización del motor de datos offline y desacoplamiento de componentes de marketing y preventa.",
-    tags: ["Flutter", "Software Architecture", "BLoC/Clean", "Enterprise CRM", "Data Sync"],
-  }
-];
+const { projects } = Astro.props;
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-  {PROJECTS.map((project, index) => (
+  {projects.map((project, index) => (
     <div class={index === 0 ? "md:col-span-2" : ""}>
       <ProjectItem {...project} />
     </div>

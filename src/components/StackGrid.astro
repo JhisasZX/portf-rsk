@@ -1,40 +1,16 @@
 ---
-// StackGrid.astro
-const pathname = Astro.url.pathname;
-const isEn = pathname.startsWith('/en');
+import type { StackCategory } from "../data/portfolio";
 
-const STACK = [
-  {
-    category: isEn ? "Mobile & Frontend" : "Mobile & Frontend",
-    description: isEn ? "Core development ecosystem" : "Ecosistema principal de desarrollo",
-    icon: "📱",
-    items: ["Flutter", "Dart", "React", "TypeScript", "JavaScript", "Tailwind CSS", "Figma (UI/UX)"],
-    gradient: "from-blue-500/10 via-cyan-500/5 to-transparent",
-    border: "hover:border-cyan-500/40"
-  },
-  {
-    category: isEn ? "Backend & Cloud" : "Backend & Nube",
-    description: isEn ? "Data engines and cloud services" : "Motores de datos y servicios cloud",
-    icon: "☁️",
-    items: ["Firebase", "Firestore", "Node.js", "Python", "SQL / MySQL", "GCP", "REST & WebSockets"],
-    gradient: "from-purple-500/10 via-pink-500/5 to-transparent",
-    border: "hover:border-purple-500/40"
-  },
-  {
-    category: isEn ? "Architecture & Tools" : "Arquitectura & Herramientas",
-    description: isEn ? "Workflows and scalable engineering" : "Flujos y patrones de ingeniería",
-    icon: "⚡",
-    items: ["Clean Architecture", "BLoC & Signals", "Offline-First", "Git / GitHub", "Postman", "n8n", "Jira / ClickUp"],
-    gradient: "from-emerald-500/10 via-green-500/5 to-transparent",
-    border: "hover:border-emerald-500/40"
-  }
-];
+interface Props {
+  stack: StackCategory[];
+}
+
+const { stack } = Astro.props;
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-  {STACK.map((group) => (
+  {stack.map((group) => (
     <div class={`glow-card flex flex-col justify-between relative overflow-hidden group transition-all duration-500 hover:-translate-y-1.5 ${group.border}`}>
-      <!-- Ambient card glow -->
       <div class={`absolute inset-0 bg-gradient-to-b ${group.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}></div>
       
       <div class="relative z-10 mb-6">
