@@ -1,6 +1,8 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import '@fontsource-variable/onest';
+import '@fontsource-variable/playfair-display/index.css';
+import '@fontsource-variable/playfair-display/wght-italic.css';
 import '../styles/global.css';
 import Header from "../components/header.astro";
 
@@ -10,7 +12,7 @@ interface Props {
   image?: string
 }
 
-const { description, title, image = "https://res.cloudinary.com/dmegzyenk/image/upload/v1763726957/me_cs_doqcyr.jpg" } = Astro.props
+const { description, title, image = "https://res.cloudinary.com/dmegzyenk/image/upload/f_auto,q_auto,w_1200/v1763726957/me_cs_doqcyr.jpg" } = Astro.props
 const pathname = Astro.url.pathname;
 const isEn = pathname.startsWith('/en');
 const currentLang = isEn ? 'en' : 'es';
@@ -25,6 +27,9 @@ const canonicalURL = new URL(pathname, Astro.site || 'https://portf-rsk.vercel.a
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="es" href="https://portf-rsk.vercel.app/" />
+    <link rel="alternate" hreflang="en" href="https://portf-rsk.vercel.app/en" />
+    <link rel="alternate" hreflang="x-default" href="https://portf-rsk.vercel.app/" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#0a0a0a" />
 
@@ -50,24 +55,20 @@ const canonicalURL = new URL(pathname, Astro.site || 'https://portf-rsk.vercel.a
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
-    <!-- Google Fonts: Playfair Display -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <ClientRouter />
   </head>
   <body class="relative min-h-screen font-sans selection:bg-purple-500/30 bg-[#0a0a0a] text-white">
-    <!-- AURORA & TECH MESH BACKGROUND -->
-    <div class="fixed inset-0 z-[-2] w-full h-full bg-[#0a0a0a] overflow-hidden pointer-events-none">
+    <!-- AURORA & TECH MESH BACKGROUND (Optimized Radial Gradients with GPU Layer Isolation) -->
+    <div class="fixed inset-0 z-[-2] w-full h-full bg-[#0a0a0a] overflow-hidden pointer-events-none transform-gpu" style="contain: strict;">
       <!-- Ambient Radial Dot Mesh Texture -->
       <div class="absolute inset-0 w-full h-full bg-[radial-gradient(#ffffff12_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_75%_60%_at_50%_0%,#000_65%,transparent_100%)] opacity-80"></div>
 
       <!-- Top Left Blob -->
-      <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-600/35 rounded-full blur-[130px] mix-blend-screen opacity-70 animate-blob"></div>
+      <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[radial-gradient(circle,rgba(147,51,234,0.32)_0%,transparent_70%)] rounded-full blur-[60px] opacity-75 animate-blob"></div>
       <!-- Top Right Blob -->
-      <div class="absolute top-[-5%] right-[-10%] w-[40%] h-[60%] bg-blue-600/35 rounded-full blur-[130px] mix-blend-screen opacity-70 animate-blob animation-delay-2000"></div>
+      <div class="absolute top-[-5%] right-[-10%] w-[45%] h-[60%] bg-[radial-gradient(circle,rgba(37,99,235,0.28)_0%,transparent_70%)] rounded-full blur-[60px] opacity-75 animate-blob animation-delay-2000"></div>
       <!-- Bottom Left Blob -->
-      <div class="absolute bottom-[-10%] left-[20%] w-[60%] h-[50%] bg-orange-500/25 rounded-full blur-[130px] mix-blend-screen opacity-70 animate-blob animation-delay-4000"></div>
+      <div class="absolute bottom-[-10%] left-[20%] w-[60%] h-[50%] bg-[radial-gradient(circle,rgba(249,115,22,0.2)_0%,transparent_70%)] rounded-full blur-[60px] opacity-75 animate-blob animation-delay-4000"></div>
     </div>
     
     <Header />
@@ -79,11 +80,12 @@ const canonicalURL = new URL(pathname, Astro.site || 'https://portf-rsk.vercel.a
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add('active');
+              observer.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.1, rootMargin: '60px' });
 
-        document.querySelectorAll('.reveal').forEach((el) => {
+        document.querySelectorAll('.reveal:not(.active)').forEach((el) => {
           observer.observe(el);
         });
       });

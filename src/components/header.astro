@@ -23,7 +23,7 @@ const isEn = pathname.startsWith('/en');
               <a href="/en" class={isEn ? "text-white font-bold px-1" : "text-neutral-400 hover:text-white transition-colors px-1"}>EN</a>
           </div>
 
-          <button id="mobile-menu-btn" class="md:hidden text-white p-2 focus:outline-none relative z-[1001] rounded-lg hover:bg-white/10 transition-colors" aria-label="Menu">
+          <button id="mobile-menu-btn" class="md:hidden text-white p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 relative z-[1001] rounded-lg hover:bg-white/10 transition-colors" aria-label="Menu">
               <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
               <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="close-icon hidden"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
@@ -40,8 +40,12 @@ const isEn = pathname.startsWith('/en');
   <div class="flex flex-col items-center shrink-0">
     <div class="relative mb-3">
       <img 
-        src="https://res.cloudinary.com/dmegzyenk/image/upload/v1763726957/me_cs_doqcyr.jpg" 
+        src="https://res.cloudinary.com/dmegzyenk/image/upload/f_auto,q_auto,w_192,c_fill,g_face/v1763726957/me_cs_doqcyr.jpg" 
         alt="Jesús Machicado" 
+        width="96"
+        height="96"
+        loading="lazy"
+        decoding="async"
         class="w-24 h-24 rounded-full object-cover border-2 border-purple-500/40 shadow-[0_0_35px_rgba(168,85,247,0.35)] shrink-0" 
       />
       <span class="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-emerald-400 border-2 border-[#0a0a0a]"></span>
@@ -83,26 +87,29 @@ const isEn = pathname.startsWith('/en');
   document.addEventListener('astro:page-load', () => {
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
-    const menuIcon = btn?.querySelector('.menu-icon');
-    const closeIcon = btn?.querySelector('.close-icon');
+    if (!btn || !menu || btn.dataset.bound === 'true') return;
+    btn.dataset.bound = 'true';
+
+    const menuIcon = btn.querySelector('.menu-icon');
+    const closeIcon = btn.querySelector('.close-icon');
     const links = document.querySelectorAll('.mobile-link');
 
     const openMenu = () => {
-      menu?.classList.remove('translate-x-full');
+      menu.classList.remove('translate-x-full');
       menuIcon?.classList.add('hidden');
       closeIcon?.classList.remove('hidden');
       document.body.classList.add('overflow-hidden');
     };
 
     const closeMenu = () => {
-      menu?.classList.add('translate-x-full');
+      menu.classList.add('translate-x-full');
       menuIcon?.classList.remove('hidden');
       closeIcon?.classList.add('hidden');
       document.body.classList.remove('overflow-hidden');
     };
 
     const toggleMenu = () => {
-      const isOpen = !menu?.classList.contains('translate-x-full');
+      const isOpen = !menu.classList.contains('translate-x-full');
       if (isOpen) {
         closeMenu();
       } else {
@@ -110,7 +117,7 @@ const isEn = pathname.startsWith('/en');
       }
     };
 
-    btn?.addEventListener('click', toggleMenu);
+    btn.addEventListener('click', toggleMenu);
     
     links.forEach(link => {
       link.addEventListener('click', closeMenu);

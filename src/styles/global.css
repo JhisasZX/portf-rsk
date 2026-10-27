@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .font-playfair {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display Variable', 'Playfair Display', Georgia, serif;
 }
 
 html {
@@ -9,14 +9,17 @@ html {
 }
 
 @keyframes blob {
-  0% { transform: translate(0px, 0px) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-  100% { transform: translate(0px, 0px) scale(1); }
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(30px, -40px, 0) scale(1.08); }
+  66% { transform: translate3d(-20px, 20px, 0) scale(0.95); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
 }
 
 .animate-blob {
-  animation: blob 10s infinite alternate;
+  animation: blob 12s infinite alternate ease-in-out;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 .animation-delay-2000 {
@@ -29,8 +32,9 @@ html {
 
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 .reveal.active {
@@ -39,12 +43,14 @@ html {
 }
 
 .glow-card {
-  background: rgba(23, 23, 23, 0.4);
-  backdrop-filter: blur(12px);
+  background: rgba(23, 23, 23, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 1.25rem;
   padding: 1.25rem;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 @media (min-width: 640px) {
@@ -63,6 +69,17 @@ html {
 
 .glow-card:hover {
   border-color: rgba(168, 85, 247, 0.4);
-  box-shadow: 0 10px 40px -10px rgba(168, 85, 247, 0.3), inset 0 0 20px rgba(168, 85, 247, 0.1);
-  transform: translateY(-5px);
+  box-shadow: 0 10px 40px -10px rgba(168, 85, 247, 0.3), inset 0 0 20px rgba(168, 85, 247, 0.08);
+  transform: translateY(-4px) translateZ(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob {
+    animation: none;
+  }
+  .reveal {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
